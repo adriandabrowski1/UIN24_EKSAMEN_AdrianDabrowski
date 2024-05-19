@@ -1,50 +1,6 @@
-/*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
-export default function Home() {
-  const [pokemons, setPokemons] = useState([]);
-  const [types, setTypes] = useState([]);
-
-  useEffect(() => {
-    const fetchPokemons = async () => {
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=9');
-      setPokemons(response.data.results);
-    };
-
-    const fetchTypes = async () => {
-      const response = await axios.get('https://pokeapi.co/api/v2/type');
-      setTypes(response.data.results);
-    };
-
-    fetchPokemons();
-    fetchTypes();
-  }, []);
-
-  return (
-    <div>
-      <section>
-        <h2>Main Pokemons</h2>
-        <ul>
-          {pokemons.map(pokemon => (
-            <li key={pokemon.name}>{pokemon.name}</li>
-          ))}
-        </ul>
-      </section>
-      <section>
-        <h2>Types</h2>
-        <ul>
-          {types.map(type => (
-            <li key={type.name}>{type.name}</li>
-          ))}
-        </ul>
-      </section>
-    </div>
-  );
-}*/
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-//import '..styles/App.scss'; // Import the updated SCSS
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
@@ -66,12 +22,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <main>
       <section className="home-section">
         <h2>Main Pokemons</h2>
         <ul>
           {pokemons.map(pokemon => (
-            <li key={pokemon.name}>{pokemon.name}</li>
+            <li key={pokemon.name}>
+              <Link to={`/pokemons/${pokemon.name}`}>{pokemon.name}</Link>
+            </li>
           ))}
         </ul>
       </section>
@@ -79,12 +37,12 @@ export default function Home() {
         <h2>Types</h2>
         <ul>
           {types.map(type => (
-            <li key={type.name}>{type.name}</li>
+            <li key={type.name}>
+              <Link to={`/type/${type.name}`}>{type.name}</Link>
+            </li>
           ))}
         </ul>
       </section>
-    </div>
+    </main>
   );
 }
-
-

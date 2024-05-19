@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Type() {
@@ -16,13 +16,17 @@ export default function Type() {
   }, [typeName]);
 
   return (
-    <div>
+    <main>
       <h1>{typeName} Type Pokemons</h1>
       <ul>
         {pokemons.map(pokemon => (
-          <li key={pokemon.name}>{pokemon.name}</li>
+          <li key={pokemon.name}>
+            <Link to={`/pokemons/${pokemon.name}`}>{pokemon.name}</Link>
+          </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
+
+
