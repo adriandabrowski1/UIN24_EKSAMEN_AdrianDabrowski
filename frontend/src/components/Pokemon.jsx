@@ -36,8 +36,10 @@ export default function Pokemon() {
     <main className="pokemon-page">
       {pokemon && (
         <article>
-          <header className="pokemon-header">
-            <img className="pokemon-image" src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <header className="pokemon-header"> 
+            <section className="pokemon-image-box">
+              <img className="pokemon-image" src={pokemon.sprites.front_default} alt={pokemon.name} />
+            </section>
             <div className="pokemon-title">
               <h1>{capitalizeFirstLetter(pokemon.name)}</h1>
               <p>#{pokemon.id.toString().padStart(3, '0')}</p>
