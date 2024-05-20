@@ -10,8 +10,8 @@ import SearchResult from './components/SearchResult';
 import Pokemon from './components/Pokemon';
 
 function App() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate = useNavigate(); // Jeg brukte denne kilden for å få til navigate: https://reactrouter.com/en/main/hooks/use-navigate
+  const location = useLocation(); // Jeg brukte denne kilden for å få til location: https://reactrouter.com/en/main/hooks/use-location#uselocation
   const searchRef = React.useRef(null);
 
   const handleSearch = (e) => {

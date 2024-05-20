@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'; // Jeg brukte denne kilden for å få til userParams: https://reactrouter.com/en/main/hooks/use-params
 import axios from 'axios';
 
 export default function Pokemon() {
