@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
@@ -21,6 +21,10 @@ export default function Home() {
     fetchTypes();
   }, []);
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <main>
       <section className="home-section">
@@ -28,7 +32,7 @@ export default function Home() {
         <ul>
           {pokemons.map(pokemon => (
             <li key={pokemon.name}>
-              <Link to={`/pokemons/${pokemon.name}`}>{pokemon.name}</Link>
+              <Link to={`/pokemons/${pokemon.name}`}>{capitalizeFirstLetter(pokemon.name)}</Link>
             </li>
           ))}
         </ul>
@@ -38,7 +42,7 @@ export default function Home() {
         <ul>
           {types.map(type => (
             <li key={type.name}>
-              <Link to={`/type/${type.name}`}>{type.name}</Link>
+              <Link to={`/type/${type.name}`}>{capitalizeFirstLetter(type.name)}</Link>
             </li>
           ))}
         </ul>

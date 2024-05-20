@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function SearchResult() {
@@ -21,21 +21,26 @@ export default function SearchResult() {
     fetchPokemon();
   }, [pokemonName]);
 
-  if (notFound) {
-    return <div>Pokemon not found</div>;
-  }
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   return (
-    <div>
-      {pokemon && (
-        <div>
-          <h1>{pokemon.name}</h1>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-          {/* Additional details */}
-        </div>
+    <main className="search-results-page">
+      <h1>RESULTATER</h1>
+      {notFound ? (
+        <div className="not-found">Finner ikke noe på "{capitalizeFirstLetter(pokemonName)}"</div>
+      ) : (
+        pokemon && (
+          <div className="pokemon-card">
+            <Link to={`/pokemons/${pokemon.name}`}>
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <h2>{capitalizeFirstLetter(pokemon.name)}</h2>
+              <p>#{pokemon.id.toString().padStart(3, '0')}</p>
+            </Link>
+          </div>
+        )
       )}
-    </div>
+    </main>
   );
 }
-
-

@@ -15,18 +15,20 @@ export default function Type() {
     fetchPokemonsByType();
   }, [typeName]);
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
-    <main>
-      <h1>{typeName} Type Pokemons</h1>
+    <main className="type-page">
+      <h1>{capitalizeFirstLetter(typeName)} Type Pokemons</h1>
       <ul>
         {pokemons.map(pokemon => (
           <li key={pokemon.name}>
-            <Link to={`/pokemons/${pokemon.name}`}>{pokemon.name}</Link>
+            <Link to={`/pokemons/${pokemon.name}`}>{capitalizeFirstLetter(pokemon.name)}</Link>
           </li>
         ))}
       </ul>
     </main>
   );
 }
-
-
